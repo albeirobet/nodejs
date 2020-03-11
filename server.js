@@ -44,3 +44,6 @@ app.listen(port, () => {
 
 // Test
 app.use('/api/test', testRoutes)
+
+
+// ps -e|grep node
