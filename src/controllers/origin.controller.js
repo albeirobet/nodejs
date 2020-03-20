@@ -6,12 +6,13 @@ const commonErrors = require('../utils/constants/common-errors')
 const originService = require('../services/origin.service')
 'use strict';
 
-create = (req, res) => {
+create = async (req, res) => {
     var generalResponse = new GeneralResponse;
     generalResponse.success = false;
     var codeHttp;
     try {
-        var data = originService.create(req, res);
+        var data = await originService.create(req, res);
+        console.log('imprimir: ', data)
         generalResponse.success = true;
         generalResponse.data = data;
         generalResponse.message = commonMessages.SUCCESS_PROCESS;

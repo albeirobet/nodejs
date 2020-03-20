@@ -83,7 +83,7 @@ const commonErrors = require('../utils/constants/common-errors')
 // module.exports = functions;
 
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
 
 
     console.log('Calling create origin ')
@@ -103,12 +103,15 @@ exports.create = (req, res) => {
 
 
     // Save user in the database
-    origin.save()
-        .then(data => {
+    let savedOrigin = await origin.save();
+    console.log('enviando: ', savedOrigin)
+    return savedOrigin;
+        /*.then(data => {
+            console.log('sending: ',data)
             res.send(data);
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Something went wrong while creating new user."
             });
-        });
+        });*/
 };
